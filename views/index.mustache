@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="StyleSheet" href="style.css" />
+    <title>PKD</title>
+  </head>
+  <body>
+
+    <div id ="container">
+      <h1 id="headline">Philip K. Database</h1>
+
+      <div id="book-form">
+        <form id="parentForm" method="post" action="/">
+          <div id="top-half">
+            <input class="row1" type="text" name="title" placeholder="Title"/>
+            <input class="row1" type="text" name="published" placeholder="Date Published"/>
+            <input class="row1" type="text" name="publisher" placeholder="Publisher"/>
+            <select class="row1" name="genre">
+              <option value="Sci-fi">Sci-Fi</option>
+              <option value="Horror">Horror</option>
+              <option value="Fantasy">Fantasy</option>
+            </select>
+          </div>
+
+          <div id="bottom-half">
+            <input  type="text" name="characters" placeholder="Main Characters"/>
+            <textarea id="plot" name="description" placeholder="Plot and Setting"></textarea>
+            <!-- <input type="text" name="description" placeholder="Plot and Setting"/> -->
+            <div id="checkbox">
+              <input class="row2" type="checkbox" name="read" placeholder="Read?"/>
+              Read Yet?
+            </div>
+            <button class="row2" type="submit">Add</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="book-container">
+        {{ #pkd }}
+          <fieldset class="books">
+            <h2>{{ title }}</h2>
+            <ul>
+            <li>{{ published }}</li>
+            <li>{{ publisher }}</li>
+            <li>{{ genre }}</li>
+            <li>{{ characters }}</li>
+            <li>{{ description }}</li>
+            {{ #read }}<li>I've read this!</li>{{ /read }}
+            {{ ^read }}<li>I still need to read this one.</li>{{ /read }}
+            </ul>
+          </fieldset>
+        {{ /pkd }}
+      </div>
+
+    </div>
+
+  </body>
+</html>
